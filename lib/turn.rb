@@ -32,3 +32,7 @@ def turn(board)
   move(board, input, 'X')
   display_board(board)
 end
+
+def draw?(board)
+  return true unless won?(board)
+end
