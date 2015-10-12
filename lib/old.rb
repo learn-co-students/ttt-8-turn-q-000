@@ -7,28 +7,30 @@ def display_board(board)
 end
 
 def valid_move?(board, position)
-  if position.to_i.between?(1,9)
-    if !position_taken?(board, position.to_i-1)
-      true
+  if !position_taken?(board, position.to_i-1)
+    if (0..8).include?(position.to_i)
+      return true
     end
   end
 end
 
+def position_taken?(board, position)
+  board[position] != " "
+end
+
+def move(board, position, token = "X")
+  current = board[position.to_i-1]
+end
+
+
 def turn(board)
   puts "Please enter 1-9:"
-  user_input = gets.strip
-  if valid_move?(board, user_input)
-    move(board, user_input)
+  input = gets.strip
+  if valid_move?(board, input)
+    move(board, input)
   else
     turn(board)
   end
   display_board(board)
 end
 
-def position_taken?(board, location)
-  board[location] != " "
-end
-
-def move(board, location, current_player = "X")
-  board[location.to_i-1] = current_player
-end
