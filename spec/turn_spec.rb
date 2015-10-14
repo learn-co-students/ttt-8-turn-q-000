@@ -27,7 +27,7 @@ describe './lib/turn.rb' do
     end
   end
 
-  describe '#valid_move?' do
+  describe '#valid_move?(board,position)' do
     it 'returns true/false based on position' do
       board = [" ", " ", " ", " ", "X", " ", " ", " ", " "]
 
