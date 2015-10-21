@@ -7,7 +7,7 @@ def turn(board)
        puts display_board(board)
      else
       while turn(board) == false
-       puts "The current number is less than 20."
+       puts "Please enter valid move"
        turn(board)
         end
      
