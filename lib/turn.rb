@@ -5,6 +5,7 @@ def turn(board)
     move(board, input)
     display_board(board)
   else
+    puts "Invalid"
     turn(board)
   end
 
