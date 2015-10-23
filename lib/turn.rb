@@ -3,7 +3,7 @@ def display_board(board)
   puts "---------- "
   puts " #{board[3]} | #{board[4]} | #{board[5]} "
   puts "----------- "
-  puts " #{board[6]} | #{board[7]} | #{board[8]} "
+  puts " #{board[6]} | #{board[7]} | #{board[8]} \n\n"
 end
 
 
@@ -32,9 +32,9 @@ def turn(board)
   input = gets.strip
   if valid_move?(board, input)
     move(board, input)
-    display_board(board)
   else
     puts "Sorry. Invalid move. Please, try again."
     turn(board)
   end
+  display_board(board)
 end
