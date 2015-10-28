@@ -5,9 +5,10 @@ def turn(board)
   puts "Please enter 1-9:"
   position = gets.strip
   if !valid_move?(board, position)
-    position = gets.strip
-  end
+    turn(board)
+  else  
   move(board, position, character = "X")
+  end
   display_board(board)
 end
 
