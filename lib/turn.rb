@@ -42,17 +42,6 @@ end
 
 
 
-if __FILE__ == $0 
-board = 
-
-puts valid_move?(board, 1)
-end
-
-
-
-
-
-
 
 
 
