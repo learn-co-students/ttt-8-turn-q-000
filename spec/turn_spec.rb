@@ -7,7 +7,6 @@ describe './lib/turn.rb' do
       board = ["X", "X", "X", "X", "O", "O", "X", "O", "O"]
 
       output = capture_puts{ display_board(board) }
-
       expect(output).to include(" X | X | X ")
       expect(output).to include("-----------")
       expect(output).to include(" X | O | O ")
