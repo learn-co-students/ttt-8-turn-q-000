@@ -26,20 +26,16 @@ def position_taken? (board, position)
       board[position] == "X" || board[position] == "O"
     true
 end
-  end
+end
 # re-define your #position_taken? method here, so that you can use it in the #valid_move? method above.
-def position_taken? (board, position)
-  if  board[position] == " " || board[position] == "" || board[position] == nil
-    return false
-  else
-    return true
-end
-end
+
 
 def turn(board)
   puts "Please enter 1-9:"
   pick = gets.strip
-  pick = pick.to_i - 1
-  
-
+    if valid_move?(board, pick)
+      move(board, pick)
+      puts display_board(board)
+    else turn(board)
+end
 end
