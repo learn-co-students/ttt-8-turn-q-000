@@ -6,8 +6,11 @@ board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
 puts "Please enter 1-9:"
 pos = gets.strip
+valid_move?(board, pos)
 
-turn(board, pos)
+
+
+turn(board)
 
 display_board(board)
 

@@ -15,8 +15,9 @@ end
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
 def valid_move?(board, pos)
+  pos = pos.to_i-1
   if position_taken?(board, pos) == false
-    if pos.to_i.between?(0, 8) 
+    if pos.between?(0, 8) 
       true
     else
       false  
@@ -27,7 +28,6 @@ def valid_move?(board, pos)
 end
 
 def position_taken?(board, pos)
-  
   if board[pos.to_i] == " " || board[pos.to_i] == "" || board[pos.to_i] == nil
     false
   elsif board[pos.to_i] == "X" || board[pos.to_i] == "O"
@@ -36,12 +36,12 @@ def position_taken?(board, pos)
 end
 
 def turn(board)
-  turns = 9
-  while turns <= 10
-    if valid_move?(board, pos) == true
-        turns += 1
+  puts "Please enter 1-9:"
+  pos = gets.strip
+    if !valid_move?(board, pos) 
+      turn(board)
     else
-        puts "Invalid entry. Please enter 1-9."
+      move(board, pos)
     end
-  end
+  display_board(board)
 end
