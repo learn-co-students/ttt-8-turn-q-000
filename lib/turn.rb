@@ -2,12 +2,13 @@
 
 def turn(board)
   puts "Please enter 1-9:"
-  position = gets.split
+  position = gets.chomp
   if valid_move?(board, position)
     move(board, position, token = "X")
   else
     turn(board)
   end
+  display_board(board)
 end
 
 
@@ -17,7 +18,6 @@ end
 
 
 def valid_move?(board, position)
-  position = position.to_i
   position.to_i.between?(1,9) && !position_taken?(board, position.to_i-1)
 end
 
