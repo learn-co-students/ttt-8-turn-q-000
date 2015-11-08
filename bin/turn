@@ -1,1 +1,14 @@
 #!/usr/bin/env ruby
+
+require_relative '../lib/turn.rb'
+
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+puts "Please enter 1-9:"
+pos = gets.strip
+
+turn(board, pos)
+
+display_board(board)
+
+
