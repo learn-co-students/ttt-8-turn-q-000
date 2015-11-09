@@ -3,11 +3,11 @@ def turn(board)
   position = gets.strip
 
   until valid_move?(board, position)
-    #puts "Please enter 1-9:"
-    #position = gets.strip
+    puts "Please enter 1-9:"
+    position = gets.strip
     
-    #using recursion 
-    turn(board)
+    #using recursion. doesn't perform within the loop.
+    #turn(board)
   end
 
     move(board, position, "X")
