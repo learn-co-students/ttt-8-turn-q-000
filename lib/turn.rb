@@ -7,13 +7,15 @@ def display_board(board)
 
 end
 
+# Make the Move
+
 def move(board, choice ,char = "X")
 
   board[choice.to_i-1] = char
   display_board(board)
 end
 
-# code your #valid_move? method here
+# Check if valid move?
 
 def valid_move?(board, i)
 
@@ -28,12 +30,13 @@ def valid_move?(board, i)
 
 end
 
+# Take a Turn
 
 def turn(board)
 
   puts "Please enter 1-9:"
   choice = gets
-  # valid_move?(board, choice)
+
   if valid_move?(board, choice) == true
   puts "valid Move"
     move(board, choice, char = "X")
