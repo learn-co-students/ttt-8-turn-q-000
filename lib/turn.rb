@@ -1,31 +1,15 @@
-#def turn(board)
-#  puts "Please enter 1-9:"
-#  value = gets.strip
-#  if valid_move?(board, position)
-#    move(board, position, value = "X")
-#  else
-#    # puts "\n\tInvalid move! Try again!"
-#    # valid_move? == nil
-#    turn(board) #. this should be encapsulated by a loop construct (like a while or until
-#  end
-#end
-
-
-### 3
 def turn(board)
   puts "Please enter 1-9:"
-  input = gets.strip
-
-  if valid_move?(board, input)
-    move(board, input, value = "X")
+  position = gets.strip
+  if valid_move?(board, position)
+    move(board, position, value = "X")
     display_board(board)
-
   else #this is the pseudo-code for your loop structure:
-    until valid_move?(board, input) == true
+    until valid_move?(board, position) == true
       puts "Invalid move! Try again!"
       turn(board)
-    break
-  end
+      break
+    end
   end
 end
 ###
