@@ -17,9 +17,7 @@ end
 
 #Def Valid Move - using previous lesson
 def valid_move?(board, position)
-  if !position_taken?(board, position) && position.to_i.between?(1, 9)
-  true
-  end
+  return true if !position_taken?(board, position) && position.to_i.between?(1, 9)
 end
 
 #Def Move - This accepts board/position/token(X/O, default to X)
