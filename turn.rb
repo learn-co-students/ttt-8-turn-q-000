@@ -26,17 +26,7 @@ def position_taken?(board, position)
   end
 end
 
-def move(array, position, character = 'X')
-    position = position.to_i - 1
-    array[position] = character
-end
-
-def turn(board)
-  puts "Please enter 1-9:"
-  input = gets.strip
-  if valid_move?(board, input) == false
-    turn(board)
-  end
-  move(board, input)
-  display_board(board)
+def move(array, location, character = 'X')
+    location = location.to_i - 1
+    array[location] = character
 end
