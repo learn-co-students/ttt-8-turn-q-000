@@ -1,1 +1,10 @@
 #!/usr/bin/env ruby
+require_relative '../lib/turn'
+
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+position = position.to_i - 1
+
+puts "Welcome to Tic Tac Toe!"
+display_board(board)
+turn(board)
+move(board,position,token="X")
