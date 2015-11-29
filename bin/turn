@@ -1,1 +1,19 @@
 #!/usr/bin/env ruby
+require_relative "../lib/turn.rb"
+
+
+board = newBoard()
+puts "Welcome to Tic Tac Toe!"
+
+display_board(board)
+9.times do
+turn(board)
+pos = gets.strip.to_i
+until valid_move?(board,pos)
+turn(board)
+pos = gets.strip.to_i
+end
+move(board,pos,curTurn(board))
+display_board(board)
+end
+
