@@ -11,8 +11,7 @@ def move(board, position, value = "X")
 end
 
 def valid_move? (board, position)
-   position = position.to_i - 1
-  if position.between?(0,10) == true && position_taken?(board, position) == false
+    if position.to_i.between?(1,9) && position_taken?(board, position.to_i-1) == false
     true
   else position_taken?(board, position) == true
     false
