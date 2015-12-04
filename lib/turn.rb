@@ -37,5 +37,5 @@ def position_taken?(board, position)
     false
   elsif (position.to_i-1).between?(0,9) && board[position.to_i-1] == " "
     true
-  end
+    end
 end
