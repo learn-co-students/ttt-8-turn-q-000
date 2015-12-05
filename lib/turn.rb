@@ -29,9 +29,9 @@ end
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
-  if input == (position.to_i-1).between?(0,8)
+  if input == def valid_move?(board, position)
     return display_board(board, input)
     else puts "Please enter 1-9:"
 end
 end
-
+end
