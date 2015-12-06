@@ -4,7 +4,7 @@ def turn(board)
   if valid_move?(board, position)
     move(board, position, value = "X")
     display_board(board)
-  else #this is the pseudo-code for your loop structure:
+  else
     until valid_move?(board, position) == true
       puts "Invalid move! Try again!"
       turn(board)
@@ -12,14 +12,10 @@ def turn(board)
     end
   end
 end
-###
-
 
 # defining display_board method that takes board as an argument.
 
 def display_board(board = [" ", " ", " ", " ", " ", " ", " ", " ", " "])
-
-  #board = [" ", " ", " ", " ", " ", " ", " ", " ", "]
 
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
