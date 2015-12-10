@@ -1,1 +1,26 @@
 #!/usr/bin/env ruby
+require_relative '../lib/turn'
+
+# def turn
+#   puts "Please enter 1-9:"
+#   input = gets.strip
+#   display_board(board)
+#   move(board, input)
+#   display_board(board)
+
+
+board = Array.new(9, " ")
+
+puts  "Welcome to Tic Tac Toe!"
+display_board(board)
+turn(board)
+
+# puts "Where would you like to go?"
+
+# input = gets.strip
+
+# display_board(board)
+
+# move(board, input)
+
+# display_board(board)
