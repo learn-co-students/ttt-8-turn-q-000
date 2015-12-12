@@ -38,16 +38,11 @@ def turn(board)
   choice = gets
 
   if valid_move?(board, choice) == true
-  puts "valid Move"
     move(board, choice, char = "X")
   else
-  puts "Try Again Dummie"
+    puts "Try Again Dummie"
     turn(board)
   end
-
-
-
-
 
 end
 
