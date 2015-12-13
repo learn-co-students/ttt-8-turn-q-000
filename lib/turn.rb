@@ -1,14 +1,3 @@
-def turn(board)
-  puts "Please enter 1-9:"
-  input = gets.strip
-  while !valid_move?(board, input)
-    puts "Please enter 1-9:"
-    input = gets.strip
-  end
-  move(board, input)
-  display_board(board)
-end
-
 def display_board(array)
   puts " #{array[0]} | #{array[1]} | #{array[2]} "
   puts "-----------"
@@ -18,24 +7,28 @@ def display_board(array)
 end
 
 def valid_move?(board, position)
-  if position == "invalid"
-    return false
+  if position.to_i.between?(1,9)
+    if !position_taken?(board, position.to_i-1)
+      true
+    end
   end
-  position = position.to_i
-  if position - 1 > 8
-    return false
-  elsif position_taken?(board, position - 1)
-    return false
+end
+
+def turn(board)
+  puts "Please enter 1-9:"
+  input = gets.strip
+  if !valid_move?(board, input)
+    move(board, input)
   else
-    return true
+    turn(board)
   end
+    display_board(board)
 end
 
 def position_taken?(board, position)
-  (board[position] == " " || board[position] == "" || board[position] == nil)?
-  false:true
+  board[position] == " "
 end
 
-def move(board, position, mark="X")
-  board[(position.to_i)-1] = mark
+def move(board, position, player="X")
+  board[(position.to_i)-1] = player
 end
