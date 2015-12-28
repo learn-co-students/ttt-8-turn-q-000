@@ -29,11 +29,14 @@ def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
   
-  if valid_move?(board, input)
-    move(board, input, "X")
-  else
-    puts "Sorry, you can't play there."
-    input = gets.strip
+  loop do
+    if valid_move?(board, input)
+      move(board, input, "X")
+      break
+    else
+      puts "Sorry, you can't play there."
+      input = gets.strip
+    end
   end
   
   display_board(board)
