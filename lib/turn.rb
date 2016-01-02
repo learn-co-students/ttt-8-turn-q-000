@@ -2,16 +2,16 @@ def turn(board)
   puts "Please enter 1-9:"
   position = gets.strip
 
-  if valid_move?(board, position) && position_taken?(board, position)
+  if valid_move?(board, position) #&& position_taken?(board, position)
     move(board, position, current_player = "X")
     puts "Please enter 1-9 again:"
-
   else
     puts "Please enter a valid number"
     turn(board)
   end
 
   display_board(board)
+
 
 end
 ####
@@ -25,26 +25,21 @@ def display_board(board)
 
 end
 ####
-
 def valid_move?(board, position)
-  position_taken?(board, position.to_i) #&& position.between?(1, 9)
-
   position = position.to_i
-  #position.between?(1, 9)
+  position.between?(1, 9) && !position_taken?(board, position)
+
 
 end
 
 
 ####
 def position_taken?(board, position)
-  #return true if board[position.to_i-1] == " " or board[position.to_i-1] == "" or board[position.to_i-1] == nil
-  board[position.to_i-1] != "X" && board[position.to_i-1] != "O"
+  board[position.to_i-1] == "X" or board[position.to_i-1] == "O"
 end
 
 
 ####
 def move(board, position, current_player = "X")
   board[position.to_i-1] = current_player
-
-
 end
