@@ -30,7 +30,7 @@ def valid_move?(board, position)
   position_taken?(board, position.to_i) #&& position.between?(1, 9)
 
   position = position.to_i
-  position.between?(1, 9)
+  #position.between?(1, 9)
 
 end
 
