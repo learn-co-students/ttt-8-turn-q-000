@@ -23,6 +23,7 @@ def turn(board)
     move(board, input)
   else
     turn(board)
+    return
   end
   display_board(board)
 end
