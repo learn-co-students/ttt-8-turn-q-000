@@ -1,7 +1,8 @@
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.chomp
-  if valid_move?(board, input) == true
+
+  if valid_move?(board, input)
     move(board, input)
   else
     until valid_move?(board, input) == true
@@ -9,7 +10,10 @@ def turn(board)
       break
     end
   end
+
+  display_board(board)
 end
+
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
@@ -18,32 +22,19 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
-def valid_move?(board, position)
-  if position.to_i < 1 || position.to_i > 9  
-    false
-  elsif position_taken?(board, position) == true
-    false
-  else
-    board == [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-    true
-  end
+def move(board, position, character = "X")
+  board[position.to_i - 1] = character
 end
 
 def position_taken?(board, position)
-  if board[position.to_i - 1] == " "
+  if board[position] == " " || board[position] == "" || board[position] == nil
     false
-  elsif board[position.to_i - 1] == ""
-    false
-  elsif board[position.to_i - 1] == nil
-    false
-  elsif board[position.to_i - 1] == "X"
-    true
-  elsif board[position.to_i - 1] == "O"
+  elsif board[position] == "X" || board[position] == "O"
     true
   end
 end
 
-def move(board, position, character = "X")
-  board[position.to_i - 1] = character
-  display_board(board)
+def valid_move?(board, position)
+  position = position.to_i - 1
+  position.between?(0, 8) && !position_taken?(board, position)
 end
