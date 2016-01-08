@@ -30,19 +30,14 @@ end
 
 def turn(board)
   puts "Please enter 1-9:"
-  turns_left = 9
     input = gets
-until turns_left == 0
     if valid_move?(board, input) == false
-      display_board(board)
-      input=gets.strip
-      break
+      turn(board)
     else
       move(board, input, player="X")
+    end
       display_board(board)
-      turns_left -=1
-      break
-  end
+
 end
-end
+
 
