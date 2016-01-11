@@ -23,9 +23,9 @@ def valid_move?(board, position)
 end
 end 
 
-def move(board, position, value = "X")
+def move(board, position, tick = "X")
   position = position.to_i - 1
-  board[position] = value
+  board[position] = tick
 end
 
 def turn(board)
