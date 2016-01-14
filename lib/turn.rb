@@ -41,14 +41,13 @@ def turn(board)
     board[input.to_i]="X"
 display_board(board)
 
-end 
+end
 end
 
 
 
 
-# the input needs to change the array board. it puts the X or O in that spot and changes the array.
-# run a while method for asking to play again. while the position_taken? - true then keep asking. if false then display_board the new board.
+
 
 
 
