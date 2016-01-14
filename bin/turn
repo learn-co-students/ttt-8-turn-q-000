@@ -6,8 +6,8 @@ board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 puts "Welcome to Tic Tac Toe!"
 puts "Please enter 1-9:"
 input=gets.strip
-board[input.to_i]="X"
 turn(board)
+
 
 
 #The basic flow of a CLI app goes something like this:
