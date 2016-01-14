@@ -9,18 +9,16 @@ def display_board(board)
 end
 
 def position_taken?(board, position)
-  position = position.to_i - 1
   board[position] == "X" || board[position] == "O" ? true : false
 end
 
 def valid_move?(board, position)
   position = position.to_i - 1
-  !position_taken?(board, position) && position == (0..8) ? true : false
+  !position_taken?(board, position) && position.between?(0,8) ? true : false
 end
 
 def move(board, position, value = "X")
-  position = position.to_i - 1
-  board[position] = value
+  board[position.to_i - 1] = value
 end
 
 def turn(board)
@@ -31,14 +29,6 @@ def turn(board)
     display_board(board)
   else
     puts "Invalid, please try again"
+    turn(board)
   end
 end
-
-#ask for input
-#get input
-#if input is valid
-#  make the move for input
-#else
-#  ask for input again until you get a valid input
-#end
-#show the board
