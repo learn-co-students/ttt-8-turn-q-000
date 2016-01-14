@@ -9,9 +9,4 @@ display_board(board)
 
 turn(board)
 
-#The basic flow of a CLI app goes something like this:
-#Greet the user.
-#Ask the user for input.
-#Capture and store that input.
-#Do something with that input.
-#CHANGE
+
