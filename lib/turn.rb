@@ -31,18 +31,18 @@ def position_taken?(board,position)
 end
 
 def turn(board)
-
   puts "Please enter 1-9:"
-  input=gets.strip
-  board[input.to_i]="X"
-  until valid_move?(board,input) == true
-    puts "Please input another number:"
-    input=gets.strip
-    board[input.to_i]="X"
-display_board(board)
+  input = gets.strip
+  if valid_move?(board, input)
+    move(board, input)
+  else
+    turn(board)
+  end
+  display_board(board)
+end
 
-end
-end
+
+
 
 
 
