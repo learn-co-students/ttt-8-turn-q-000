@@ -5,4 +5,8 @@ require_relative '../lib/turn.rb'
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 puts "Welcome to Tic Tac Toe!"
 display_board(board)
+turns_left=9
+until turns_left==0
 turn(board)
+turns_left -= 1
+end
