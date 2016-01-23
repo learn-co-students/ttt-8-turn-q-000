@@ -1,1 +1,26 @@
 #!/usr/bin/env ruby
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+require_relative '../lib/turn'
+puts "Welcome to Tic Tac Toe"
+
+display_board(board)
+
+turn(board)
+turn(board)
+turn(board)
+turn(board)
+turn(board)
+turn(board)
+turn(board)
+turn(board)
+turn(board)
+
+#display_board(board)
+
+#position = gets.strip
+
+#until (position.to_i).between?(1,9)
+#  puts "That was an invalid number. Please enter 1-9"
+#  break
+#end 
