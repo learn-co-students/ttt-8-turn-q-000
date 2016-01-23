@@ -40,7 +40,7 @@ def turn(board)
    position = gets.chomp
   end
    move(board, position, symbol)
-   display_board(board)
+   display(board)
 end
 
 def move(board, position, symbol)
