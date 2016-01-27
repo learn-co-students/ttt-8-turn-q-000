@@ -33,19 +33,18 @@ end
 
 def turn(board) 
   puts "Please enter 1-9:"
-  position = gets.chomp
-  symbol = 'X'
-  until valid_move?(board, position) do
-   puts "Please enter 1-9:"
-   position = gets.chomp
+  input = gets.chomp
+  player = 'X'
+  if !valid_move?(board, input)
+    turn(board)
   end
-   move(board, position, symbol)
+   move(board, input, player)
    display_board(board)
 end
 
-def move(board, position, symbol)
+def move(board, position, player)
   position = position.to_i - 1
-  board[position] = symbol
+  board[position] = player
 end
 
 def display_board(board)
