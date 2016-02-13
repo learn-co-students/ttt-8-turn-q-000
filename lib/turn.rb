@@ -35,7 +35,7 @@ def turn(board)
   if valid_move?(board,position) == true
     move(board,position)
   else
-    turn(board)
+    turn(board) #recursively ask user for valid input again and again until it is true
   end
   display_board(board)
 end
