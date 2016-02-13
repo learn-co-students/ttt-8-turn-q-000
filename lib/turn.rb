@@ -31,3 +31,5 @@ def turn(board)
     turn(board)
 end
 end
+move
+display_board
