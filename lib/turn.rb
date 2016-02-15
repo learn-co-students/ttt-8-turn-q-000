@@ -32,20 +32,18 @@ def valid_move?(board, position)
 end
 
 def move(board, position, char='X')
-  if valid_move?(board, position) == true
-    board[position.to_i-1] = char
-  end
+  board[position.to_i-1] = char
 end
 
 def turn(board)
   puts "Please enter 1-9:"
-  input = gets.chomp
+  input = gets.strip
   if valid_move?(board, input)
     move(board, input)
-    display_board(board)
   else
     turn(board)
   end
+  display_board(board)
 end
 
 
