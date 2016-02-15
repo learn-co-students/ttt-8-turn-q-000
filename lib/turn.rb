@@ -12,7 +12,7 @@ def move(board, position, char = "X")
 end
 
 def valid_move?(board, position)
-  if position == "invalid"
+  if position.to_i < 1 or position.to_i >9
     then false
   elsif position_taken?(board, position) == true
     then false
