@@ -3,7 +3,6 @@ def display_board(array)
 end
 
 def turn(array)
-
   puts "Please enter 1-9:"
   x = gets.chomp
   if valid_move?(array,x)
