@@ -39,3 +39,68 @@ end
   move(board, position, value = "X")
 display_board(board)
 end
+
+def turn_count(board)
+  count = board.select do |position|
+    position = "X" || position = "O"
+  end
+  return count.length
+end
+
+def current_player
+  if turn_count(board) % 2 == 0
+    return "X"
+  else
+    return "O"
+  end
+end
+
+def won?(board)
+   WIN_COMBINATIONS.find do | win_combination |
+
+     win_index_1 = win_combination[0]
+     win_index_2 = win_combination[1]
+    win_index_3 = win_combination[2]
+
+    position_1 = board[win_index_1]
+     position_2 = board[win_index_2]
+    position_3 = board[win_index_3]
+
+    if (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
+      return win_combination
+    else
+      false
+end
+end
+end
+
+
+def full?(board)
+  board.all? do |index|
+    index == "X" ||index == "O"
+  end
+end
+
+def draw?(board)
+  if full?(board) && !won?(board)
+    return true
+  else
+    return false
+  end
+end
+
+def over?(board)
+  if full?(board) == true || won?(board) == true || draw?(board) == true
+    return true
+  else
+    return false
+  end
+end
+
+def winner(board)
+  if won?(board)
+    return board[won?(board)[0]]
+  else
+    nil
+  end
+end
