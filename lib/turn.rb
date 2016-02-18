@@ -28,8 +28,8 @@ def valid_move?(board, position)
 end
 
 def turn(board)
-    puts "Please enter 1-9:"
-    position = gets.chomp 
+  puts "Please enter 1-9:"
+  position = gets.chomp
   until valid_move?(board,position) do
     puts "Please enter 1-9:"
     position = gets.chomp
