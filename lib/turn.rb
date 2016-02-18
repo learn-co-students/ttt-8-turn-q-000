@@ -2,14 +2,14 @@
 # Accept position and make move if valid
 def turn(board)
   puts "Please enter 1-9:"
-  position = gets.strip
+  input = gets.strip
 
-  until valid_move?(board, position)
+  until valid_move?(board, input)
     puts "Invalid Move! Try again."
-    position = gets.strip
+    input = gets.strip
   end
 
-  move(board, position)
+  move(board, input)
   display_board(board)
 end
 
