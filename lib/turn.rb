@@ -37,9 +37,7 @@ def turn(board)
     puts "Invalid move. Please enter 1-9:"
     position = gets.strip.to_i  # add - 1 once code is removed from valid_move?
     puts "Position: #{position}, valid: #{valid_move?(board, position)}"
-    return true
-    
   end
   move(board, position)
-  display_board(board)  
+  display_board(board)
 end
