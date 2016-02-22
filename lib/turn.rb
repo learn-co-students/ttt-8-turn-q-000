@@ -12,7 +12,6 @@ def valid_move?(board, position)
 
 end
 
-
 def position_taken?(board, position)
   if board[position] == " " || board[position] == ""
     false
@@ -24,32 +23,24 @@ end
 
 end
 
-
-
-
-
 def move(board, option, char="X")
   option = option.to_i
   board[option - 1] = char
   return board
 end
 
-
 def turn(board)
-move(board, "5", "X")
-move(board, "1", "O")
-move(board, "2", "X")
-  input = puts  "Please enter 1-9:"
-  puts display_board(board)
-
-  position = gets.to_i
-
-  until position == "1"
- puts  "Please enter 1-9:"
+  puts "Please enter 1-9:"
+  input = gets.strip
+  if valid_move?(board, input)
+    move(board, input)
+  else
+    turn(board)
+  end
+  display_board(board)
 end
 
 
-end
 
 
 
