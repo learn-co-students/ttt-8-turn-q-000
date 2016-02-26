@@ -78,7 +78,7 @@ describe './lib/turn.rb' do
 
       expect(self).to receive(:gets).and_return("1")
       expect(self).to receive(:valid_move?).with(board, "1").and_return(true)
-
+  
       turn(board)
     end
 
