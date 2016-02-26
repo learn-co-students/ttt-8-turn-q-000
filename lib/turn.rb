@@ -1,3 +1,4 @@
+#outputs the Tic Tac Toe board
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
@@ -6,43 +7,42 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
+#determines if a position in the board array is filled
+#position is a string
 def position_occupied?(board, position)
-  position = position.to_i
-  if board[position-1] == " "
-    return false
-  elsif board[position-1] == ""
-    return false
-  elsif board[position-1] == nil
-    return false
-  elsif board[position-1] == "X" || board[position-1] == "O"
-    return true
-  end
+  return board[position.to_i-1] == " " || board[position.to_i-1] == "" || board[position.to_i-1] == nil ?
+    false : true
 end
 
+#determines if the position in the board array is filled and between 0-8
+#position is a string
 def valid_move?(board, position)
+  #position is not between 0 and 8 = invalid move
   if position.to_i < 1 || position.to_i > 9
     return false
   else
-    if position_occupied?(board, position)
-      return false
-    else
-      return true
-    end
+    #position is occupied = invalid move
+    return position_occupied?(board, position) ? false : true
   end
 end
 
-def move(board, position, char='X')
-  board[position.to_i-1] = char
+#assigns token to board array index entered
+#position is a string and off by 1
+def move(board, position, token='X')
+  board[position.to_i-1] = token
 end
 
+#player turn
 def turn(board)
+  #get user input
   puts "Please enter 1-9:"
   input = gets.strip
-  if valid_move?(board, input)
-    move(board, input)
-  else
-    turn(board)
-  end
+
+  #determine whether to make move or not
+  #recursively run turn method again if move is invalid
+  valid_move?(board, input) ? move(board, input) : turn(board)
+
+  #display the board after a valid move has been entered
   display_board(board)
 end
 
