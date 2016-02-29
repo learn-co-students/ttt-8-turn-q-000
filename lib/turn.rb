@@ -24,10 +24,10 @@ def position_taken?(board, position)
   end
 end
 
-def move(boardArray, arrayCell, xORo = "X")
+def move(boardArray, arrayCell, player = "X")
   arrayCell = arrayCell.to_i
   arrayCell = arrayCell - 1
-  boardArray[arrayCell] = xORo
+  boardArray[arrayCell] = player
 end
 
 def turn(board)
