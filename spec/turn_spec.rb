@@ -12,8 +12,6 @@ def valid_move?(board, position)
       true
     end
   end
-
-  # position.to_i.between?(1,9) && !position_taken?(board, position.to_i-1)
 end
 
 def turn(board)
