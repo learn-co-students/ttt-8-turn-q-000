@@ -21,15 +21,17 @@ def position_taken?(board, position)
   end
 end
 
-def move(board, position, marker = X)
+def move(board, position, marker = "X")
   board[position.to_i - 1] = marker
 end
 
 def turn(board)
   puts "Please enter 1-9:"
-  until valid_move?(board, gets.strip)
+  position = gets.strip
+  if valid_move?(board, position)
+    move(board, position)
+    display_board(board)
+  else
     turn(board)
 end
 end
-move
-display_board
