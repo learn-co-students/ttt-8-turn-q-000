@@ -1,1 +1,7 @@
 #!/usr/bin/env ruby
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+turn(board)
+
+move(board, position)
+display_board(board)
