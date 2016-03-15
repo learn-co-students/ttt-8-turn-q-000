@@ -39,6 +39,7 @@ describe './lib/turn.rb' do
 
       position = "invalid"
       expect(valid_move?(board, position)).to be_falsey
+
     end
   end
 
