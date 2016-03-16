@@ -10,19 +10,24 @@ def move(array, location, char = "X")
   array[location.to_i - 1] = char
 end
 
-def valid_move?()
-  
+def valid_move?(board, position)
+   board_position = position.to_i - 1
+   if board_position.between?(0, 8) && board[board_position] == " "
+     return true
+   else
+     return false
+   end
 end
+
+
 
 def turn(board)
   puts "Please enter 1-9:"
-  input = gets.split
-  if input >= 1 && input <= 9
-    finput = input.to_i - 1
+  position = gets.strip
+  if valid_move?(board, position) == true
+    move(board, position)
+    display_board(board)
   else
-    "Please enter a valid input"
+    turn(board)
   end
-  
-  return board[finput]
-    
 end
