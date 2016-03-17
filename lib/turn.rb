@@ -9,7 +9,7 @@ end
 
 #valid_move
 def valid_move?(board, position)
-    index = get_board_index(position)
+    index = board_index(position)
     value = board[index].strip
     input = position.to_i - 1
     if !position_taken?(board, input) && input.between?(0,8)
@@ -29,19 +29,19 @@ def position_taken?(board, position)
 end
 
 #convert position numbers into index numbers
-def get_board_index(position)
+def board_index(position)
     (position.to_i) - 1
 end
 
 #convert index numbers into position numbers
-def get_board_position(index)
+def board_position(index)
     (index.to_i) + 1
 end
 
 #make a move
 def move(board, input, n = "X")
     if valid_move?(board, input) && (n == "X" || n == "O")
-        board[get_board_index(input)] = n
+        board[board_index(input)] = n
         return true
     else
         return false
