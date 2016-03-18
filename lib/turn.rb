@@ -32,6 +32,10 @@ def valid_move?(board, input)
     if position_taken?(board, input)
       move(board, input, "X")
       return true
+    else
+      puts "This position is already taken, please enter another value"
+      turn(board)
+      return false
     end
     else
     return false
