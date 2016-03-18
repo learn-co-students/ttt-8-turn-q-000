@@ -22,6 +22,7 @@ def position_taken?(board, input)
   if board[input-1].include?(playerToken)
     return false
    else
+    move(board, input, "X")
     return true
   end
 end
@@ -29,17 +30,12 @@ end
 def valid_move?(board, input)
   input =  input.to_i
   if input.between?(1, 9)
-    if position_taken?(board, input)
-      move(board, input, "X")
+      position_taken?(board, input)
       return true
     else
       puts "This position is already taken, please enter another value"
       turn(board)
-      return false
     end
-    else
-    return false
-  end
 end
 
 def turn(board)
