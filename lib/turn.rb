@@ -20,20 +20,21 @@ board = [" "," "," "," "," "," "," "," "," "]
 def position_taken?(board, input)
   playerToken = "X"
   if board[input-1].include?(playerToken)
+    puts "This position is already taken, please enter another value"
+    turn(board)
     return false
    else
     move(board, input, "X")
-    return true
   end
+  return true
 end
 
 def valid_move?(board, input)
   input =  input.to_i
   if input.between?(1, 9)
       position_taken?(board, input)
-      return true
     else
-      puts "This position is already taken, please enter another value"
+      puts "This number is not between 1 and 9"
       turn(board)
     end
 end
