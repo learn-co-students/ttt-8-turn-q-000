@@ -1,7 +1,3 @@
-def turn
-  puts "Please enter 1-9:"
-end
-
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
@@ -19,27 +15,31 @@ def move(board, input, value="X")
 end
 
 board = [" "," "," "," "," "," "," "," "," "]
-position = nil
 
-def valid_move?(board, position)
-  position =  position.to_i
-  if position.between?(1, 9)
-    if position_taken?(board, position)
+# re-define your #position_taken? method here, so that you can use it in the #valid_move? method above.
+def position_taken?(board, input)
+  playerToken = "X"
+  if board[input-1].include?(playerToken)
+    return false
+   else
+    return true
+  end
+end
+
+def valid_move?(board, input)
+  input =  input.to_i
+  if input.between?(1, 9)
+    if position_taken?(board, input)
+      move(board, input, "X")
       return true
-      else
-      return false
     end
     else
     return false
   end
 end
 
-# re-define your #position_taken? method here, so that you can use it in the #valid_move? method above.
-def position_taken?(board, position)
-  playerToken = "X"
-  if board[position-1].include?(playerToken)
-    return false
-   else
-    return true
-  end
+def turn(board)
+  puts "Please enter 1-9:"
+  input = gets.strip
+  valid_move?(board, input)
 end
