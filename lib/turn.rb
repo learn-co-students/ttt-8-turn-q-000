@@ -8,35 +8,29 @@ def display_board(board)
 end
 
 # Checks if board position is not taken.
-def position_not_taken?(board, position)
-  index_position = position.to_i - 1
-  board[index_position] == nil || board[index_position] == "" || board[index_position] == " " ? true : false
+def position_taken?(board, position)
+  !(board[position].nil? || board[position].empty? || board[position] == " ")
 end
 
 # Checks if the move is valid.
 def valid_move?(board, position)
-  position.to_i.between?(1,9) && position_not_taken?(board, position) ? true : false
+  position.to_i.between?(1,9) && !position_taken?(board, position.to_i - 1)
 end
 
 # Accepts the move (setting the position on the board).
 def move(board, position, token = "X")
-  index_position = position.to_i - 1
-  board[index_position] = token
+  board[position.to_i - 1] = token
 end
-
 
 # Starts the game!
 def turn(board)
   puts "Please enter 1-9:"
-
   position = gets.strip
 
-  # Validation
   if valid_move?(board, position)
     move(board, position)
     display_board(board)
   else
     turn(board)
   end
-
 end
