@@ -15,29 +15,31 @@ end
 def position_taken?(board, input)
   playerToken = "X"
   if board[input-1].include?(playerToken)
-    puts "This position is already taken, please enter another value"
-    turn(board)
-  else
-    move(board, input, "X")
-  end
   return false
+  else
+  return true
+  end
 end
 
 def valid_move?(board, input)
   input =  input.to_i
   if input.between?(1, 9)
      if position_taken?(board, input)
-       return false
+       return true
      end
   else
-      puts "This number is not between 1 and 9"
-      turn(board)
-  end
-  return true
+  return false
+end
 end
 
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
-  valid_move?(board, input)
+  res = valid_move?(board, input)
+  if res == true
+    move(board, input, "X")
+    else
+    puts "Move unavailable"
+    turn(board)
+  end
 end
