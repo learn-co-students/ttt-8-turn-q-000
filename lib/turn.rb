@@ -37,9 +37,8 @@ def turn(board)
     display_board(board)
     return position
   else 
-    until position.to_i.between?(1,9) ==true
+      position.to_i.between?(1,9) ==true
       turn(board) 
-    end
   end
 end
 
