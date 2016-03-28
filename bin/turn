@@ -1,1 +1,18 @@
 #!/usr/bin/env ruby
+require_relative '../lib/turn'
+
+display_board
+
+def move(board, position, value = "X")
+  puts "Where would you like to move?"
+  position = gets.strip
+  
+  until valid_move? == true
+    puts "Please enter a valid move."
+    position = gets.strip
+  end
+  
+  position = position.to_i
+  board[position-1] = value
+  display_board(board)
+end
