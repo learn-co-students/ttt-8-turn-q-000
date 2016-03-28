@@ -4,8 +4,6 @@ def display_board(board)
   puts " #{board[3]} | #{board[4]} | #{board[5]} "
   puts "-----------"
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
-  puts "Where would you like to move?"
-  position = gets.strip
 end
 
 def valid_move?(board, position)
@@ -17,3 +15,19 @@ def valid_move?(board, position)
     true
   end
 end
+
+def move(board, position, value = "X")
+  position = position.to_i - 1
+  board[position] = value
+  display_board(board)
+end
+
+def turn(board)
+  puts "Please enter 1-9:"
+  position = gets.strip
+  until valid_move?(board, position) == true
+    puts "Invalid move. Please enter 1-9:"
+    position = gets.strip
+  end
+  move(board,position, value = "X")
+end  
