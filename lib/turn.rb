@@ -1,5 +1,4 @@
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-position = gets.strip
 
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
@@ -31,6 +30,7 @@ end
 
 def turn(board)
   puts "Please enter 1-9:"
+  position = gets.strip
   if valid_move?(board, position) == true
     move(board, position, value = "X")
   elsif valid_move?(board, position) == false
