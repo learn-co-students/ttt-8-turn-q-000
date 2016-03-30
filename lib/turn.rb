@@ -33,7 +33,7 @@ def turn(board)
   position = gets.strip
   if valid_move?(board, position) == true
     move(board, position, value = "X")
-  elsif valid_move?(board, postion) == false
+  elsif valid_move?(board, position) == false
     turn(board)
   end
 end
