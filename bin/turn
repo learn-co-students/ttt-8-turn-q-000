@@ -7,6 +7,4 @@ puts "Welcome to Tic Tac Toe!"
 display_board(board)
 turn(board)
 gets.strip
-position = gets.strip
-move(board, position)
 display_board(board)
