@@ -96,9 +96,16 @@ describe './lib/turn.rb' do
     it 'makes valid moves' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
-      allow($stdout).to receive(:puts)
+      # begin original code
+      # allow($stdout).to receive(:puts)
+      # expect(self).to receive(:gets).and_return("1")
+      # end original code
 
-      expect(self).to receive(:gets).and_return("1")
+      # we don't need what puts gives us, and to expect gets is to test for it,
+      # and that is not the test that this it block is performing, we already have
+      # an expect to test for, so...
+      # what original code should have been...
+      allow(self).to receive(:gets).and_return("1")
 
       turn(board)
 
