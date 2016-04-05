@@ -9,8 +9,8 @@ end
 
 def valid_move?(board, position)
 	position = position.to_i
-   if position.between?(1,9) && !position_taken?(board, position-1) 
-    valid_move = true
+   if position.between?(1,9) && (position_taken?(board, position-1) == false)
+   	valid_move = true
    else 
    	valid_move = false
    end
@@ -39,3 +39,5 @@ def turn(board)
   end
   display_board(board)
 end
+
+
