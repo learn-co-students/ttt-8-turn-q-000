@@ -63,12 +63,11 @@ describe './lib/turn.rb' do
       turn(board)
     end
 
-    it 'gets the user input' do
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+    it 'gets the user input' do   
+      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]            
       allow($stdout).to receive(:puts)
 
       expect(self).to receive(:gets).and_return("1")
-
       turn(board)
     end
 
