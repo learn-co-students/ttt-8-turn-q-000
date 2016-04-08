@@ -1,1 +1,14 @@
 #!/usr/bin/env ruby
+
+require_relative '../lib/turn.rb'
+
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+# Code your CLI Here
+board = Array.new(9){ |i| " "}
+puts "Welcome to Tic Tac Toe!"
+#puts "Where would you like to go?"
+input = gets.chomp
+move(board, input, marker='X')
+display_board(board)
+
