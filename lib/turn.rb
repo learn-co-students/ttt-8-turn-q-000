@@ -55,6 +55,7 @@ location = input.to_i - 1
 board[location] = play
 end
 
+
 def turn(board)
 puts "Please enter 1-9:"
 position = gets.strip
@@ -65,3 +66,4 @@ position = gets.strip
   turn(board)
   end
 end
+
