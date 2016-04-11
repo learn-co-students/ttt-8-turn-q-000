@@ -27,6 +27,11 @@ describe './lib/turn.rb' do
     end
   end
 
+
+
+
+
+
   describe '#valid_move?' do
     it 'returns true/false based on position' do
       board = [" ", " ", " ", " ", "X", " ", " ", " ", " "]
@@ -42,6 +47,10 @@ describe './lib/turn.rb' do
     end
   end
 
+
+
+
+
   describe '#move' do
     it 'allows "X" player in the bottom right and "O" in the top left ' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
@@ -51,6 +60,9 @@ describe './lib/turn.rb' do
       expect(board).to eq(["O", " ", " ", " ", " ", " ", " ", " ", "X"])
     end
   end
+
+
+
 
   describe '#turn' do
     it 'asks the user for input by printing: "Please enter 1-9:"' do
