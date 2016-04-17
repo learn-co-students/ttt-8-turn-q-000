@@ -23,6 +23,8 @@ def valid_move?(board, position)
   position_int -= 1
   if position_int.between?(0, 10)
     !(position_taken?(board, position_int))
+  else
+    false
   end
 end
 
