@@ -1,21 +1,9 @@
-def display_board(moves)
-  print " #{moves[0]} "
-  print "|"
-  print " #{moves[1]} "
-  print "|"
-  puts " #{moves[2]} "
+def display_board(board)
+  puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
-  print " #{moves[3]} "
-  print "|"
-  print " #{moves[4]} "
-  print "|"
-  puts " #{moves[5]} "
+  puts " #{board[3]} | #{board[4]} | #{board[5]} "
   puts "-----------"
-  print " #{moves[6]} "
-  print "|"
-  print " #{moves[7]} "
-  print "|"
-  puts " #{moves[8]} "
+  puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
 def position_taken? (board, position)
