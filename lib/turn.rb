@@ -30,4 +30,11 @@ end
 
 def turn(board)
   puts "Please enter 1-9:"
+  input = gets
+  if valid_move?(board, position) == true
+    move(board, position, token)
+  else
+    while valid_move == false
+    input = gets
+  end
 end
