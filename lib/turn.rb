@@ -33,6 +33,8 @@ def turn(board)
   user_input = gets
 
   if valid_move?(board, user_input)
+    move(board, user_input, token="X")
+    display_board(board)
     return true
   else
     turn(board)
