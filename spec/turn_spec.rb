@@ -37,7 +37,7 @@ describe './lib/turn.rb' do
       position = "5"
       expect(valid_move?(board, position)).to be_falsey
 
-      position = "invalid"
+      position = "100"
       expect(valid_move?(board, position)).to be_falsey
     end
   end
@@ -87,7 +87,7 @@ describe './lib/turn.rb' do
 
       allow($stdout).to receive(:puts)
 
-      expect(self).to receive(:gets).and_return("invalid")
+      expect(self).to receive(:gets).and_return("100")
       expect(self).to receive(:gets).and_return("1")
 
       turn(board)
