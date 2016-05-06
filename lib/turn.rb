@@ -7,15 +7,13 @@ def display_board(board)
 end
 
 def valid_move?(board, input)
-  if position_taken?(board, input)
-    false;
-  elsif input.to_i.between?(0, 10)
-    true;
+  if position_taken?(board, input) && input.to_i.between?(1, 9)
+    false
+  elsif input.to_i.between?(1, 9)
+    true
+  else
+    false
   end
-end
-
-def move(board, input, value="X")
-  board[input.to_i - 1] = value
 end
 
 def position_taken?(board, input)
@@ -27,6 +25,23 @@ def position_taken?(board, input)
     false;
   else true;
   end
+end
+
+
+def move(board, input, value="X")
+  board[input.to_i - 1] = value
+end
+
+def turn(board)
+  puts "Please enter 1-9:"
+  gets("1")
+  if valid_move?(board, "1")
+    move(board, "5", value="X")
+  else
+    gets("1")
+    valid_move?(board, "1")
+  end
+  display_board(board)
 end
 
 
