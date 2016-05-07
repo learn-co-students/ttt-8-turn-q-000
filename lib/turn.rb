@@ -39,11 +39,11 @@ def turn(board)
     move(board, "5", value="X")
     return true
   else
-
-    gets("invalid")
-  
+    puts "Please enter 1-9 again:"
+    
+    gets("1")
     valid_move?(board, "1")
-    move(board, "5", value="X")
+
   end
   display_board(board)
 end
