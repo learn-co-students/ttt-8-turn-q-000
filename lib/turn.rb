@@ -38,10 +38,10 @@ def turn(board)
   if valid_move?(board, "1")
     move(board, "5", value="X")
   else
-    board
     puts "Please try again."
     gets("1")
     valid_move?(board, "1")
+    move(board, "5", value="X")
   end
   display_board(board)
 end
