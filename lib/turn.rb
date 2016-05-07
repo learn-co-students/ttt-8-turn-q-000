@@ -37,9 +37,11 @@ def turn(board)
   gets("1")
   if valid_move?(board, "1")
     move(board, "5", value="X")
+    return true
   else
-    puts "Please try again."
-    gets("1")
+
+    gets("invalid")
+  
     valid_move?(board, "1")
     move(board, "5", value="X")
   end
