@@ -48,8 +48,7 @@ end
 def turn(board)
     # ask user for their move by position 1-9
     puts "Please enter 1-9:"
-    # receiving the user input
-    # if move is valid, make the move and display the board to the user
+    # receiving the user input, make the move, and display the board to the user
     input = gets.strip
     # if the move is invalid, ask for a new move until valid move is received
     if !move(board, input)
