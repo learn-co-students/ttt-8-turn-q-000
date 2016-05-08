@@ -32,6 +32,10 @@ def valid_move?(board, position)
 end
 #make a move
 def move(board, input, n = "X")
+    # if the move is valid and the move is either an "X" or "O" 
+    # then move to the position that is the input number - 1 for array index
+    # and enter either an "X" or "O" in the spot
+    # or else the move is invalid
     if valid_move?(board, input) && (n == "X" || n == "O")
         board[input.to_i - 1] = n
         return true
