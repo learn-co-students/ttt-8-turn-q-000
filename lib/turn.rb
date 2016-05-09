@@ -38,10 +38,12 @@ def turn(board)
   gets("1")
   if valid_move?(board, "1")
   move(board, "5", value="X")
+
   else
     turn(board)
+    gets("invalid")
+    gets("1")
 
-  
   end
 
   display_board(board)

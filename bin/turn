@@ -13,3 +13,12 @@ turn(board)
 
 input = gets.strip
 valid_move?(board, "input")
+
+puts "That is an invalid move. Please try again."
+
+display_board(board)
+turn(board)
+
+
+input = gets.strip
+valid_move?(board, "input")
