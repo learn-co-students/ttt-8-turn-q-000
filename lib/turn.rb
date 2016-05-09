@@ -33,17 +33,18 @@ def move(board, input, value="X")
 end
 
 def turn(board)
+
   puts "Please enter 1-9:"
   gets("1")
   if valid_move?(board, "1")
-    move(board, "5", value="X")
-  elsif
-    gets("invalid")
-    valid_move?(board, "1")
-    move(board, "5", value="X")
-  else gets("1")
-    valid_move?(board, "1")
-    move(board, "5", value="X")
+  move(board, "5", value="X")
+  else
+    turn(board)
+
+    gets("1")
+
   end
+
   display_board(board)
+
 end
