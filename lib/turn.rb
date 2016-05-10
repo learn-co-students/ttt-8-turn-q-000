@@ -35,17 +35,14 @@ end
 def turn(board)
 
   puts "Please enter 1-9:"
-  gets("1")
-  if valid_move?(board, "1")
-  move(board, "5", value="X")
 
-  else
-    turn(board)
-    gets("invalid")
-    gets("1")
+  gets("")
+  gets("")
 
-  end
 
-  display_board(board)
 
+  
+
+    move(board, "5", value="X")
+    display_board(board)
 end
