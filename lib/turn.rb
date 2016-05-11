@@ -36,14 +36,13 @@ end
 def turn(board)
 
   puts "Please enter 1-9:"
-  gets ("")
+  input = gets.strip
 
-  if valid_move?(board, "1")
-  move(board, "5", value="X")
+  if valid_move?(board, input)
+  move(board, input, value="X")
 
 elsif valid_move?(board, input) == false
-  gets("invalid")
-  gets("1")
+  input = gets.strip
 
 end
 
