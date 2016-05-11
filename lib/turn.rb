@@ -30,6 +30,7 @@ def valid_move?(board, position)
         return false
     end
 end
+
 # make a move
 def move(board, input, n = "X")
     # if the move is valid and the move is either an "X" or "O" 
