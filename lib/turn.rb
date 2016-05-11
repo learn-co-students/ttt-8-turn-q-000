@@ -32,17 +32,20 @@ def move(board, input, value="X")
   board[input.to_i - 1] = value
 end
 
+
 def turn(board)
 
   puts "Please enter 1-9:"
+  gets ("")
 
-  gets("")
-  gets("")
+  if valid_move?(board, "1")
+  move(board, "5", value="X")
 
+elsif valid_move?(board, input) == false
+  gets("invalid")
+  gets("1")
 
+end
 
-  
-
-    move(board, "5", value="X")
     display_board(board)
 end
