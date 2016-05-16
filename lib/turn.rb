@@ -4,9 +4,7 @@ def turn(board)
   if valid_move?(board, position)
     move(board, position)
   else
-    while !valid_move?(board, position)
-      position = gets.strip.to_i
-    end
+    turn(board)
   end
   move(board, position)
   display_board(board)
