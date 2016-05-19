@@ -8,9 +8,7 @@ end
 
 def position_taken?(board, position)
   location = position.to_i
-  if board[location] == "" || board[location] == " "
-    false
-  elsif board[location] == nil
+  if board[location] == "" || board[location] == " " || board[location] == nil
     false
   elsif board[location] == "X" || board[location] == "O"
     true
@@ -21,12 +19,10 @@ end
 
 def valid_move?(board, position)
   location = position.to_i - 1
-  if position_taken?(board, location)
-    false
-  elsif location < 0 || location  > 8
-    false
-  else
+  if !position_taken?(board, location) && location >= 0 && location <= 8
     true
+  else
+    false
   end
 end
 
@@ -41,8 +37,9 @@ end
 def turn(board)
   puts "Please enter 1-9:"
   position = gets
-  until valid_move?(board, position)
+  if valid_move?(board, position)
+    move(board, position, character = "X")
+  else
     turn(board)
   end
-  move(board, position, character = "X")
 end
