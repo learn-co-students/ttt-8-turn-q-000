@@ -1,1 +1,17 @@
 #!/usr/bin/env ruby
+
+require_relative '../lib/turn'
+
+# Code your CLI Here
+#create the board array
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+puts "Welcome to Tic Tac Toe!"
+#display the empty board
+display_board(board)
+
+#allow only 9 turns
+count = 1
+while count < 10
+  turn(board)
+  count +=1
+end
