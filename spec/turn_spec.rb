@@ -45,8 +45,8 @@ describe './lib/turn.rb' do
   describe '#move' do
     it 'allows "X" player in the bottom right and "O" in the top left ' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      move(board, 1, "O")
-      move(board, 9, "X")
+      move(board, 0, "O")
+      move(board, 8, "X")
 
       expect(board).to eq(["O", " ", " ", " ", " ", " ", " ", " ", "X"])
     end
