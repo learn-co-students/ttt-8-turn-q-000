@@ -100,7 +100,7 @@ describe './lib/turn.rb' do
 
       allow(self).to receive(:gets).and_return("1")
 
-      expect(self).to receive(:input_to_index)
+      expect(self).to receive(:input_to_index).and_call_original
 
       turn(board)
     end
