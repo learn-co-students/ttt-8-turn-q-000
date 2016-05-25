@@ -23,29 +23,34 @@ end
 
 # re-define your #position_taken? method here, so that you can use it in the #valid_move? method above.
 def position_taken?(board, index)
-  if board[index] = " "
+  if board[index] == " "
     false
-  elsif board[index] == "" || board[index] = nil
+  elsif board[index] == "" || board[index] == nil
     false
   else
     true
   end
-
+ end
+end
 
 def input_to_index(input)
   input = (input.to_int)
   index = input - 1
 end
 
+def move(board, index, player = "X")
+  board[index] = player
+end
+
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
-   if valid_move?(board, index)
-     move(board, index, player = "X")
-     display_board(board)
-   else
-     turn(board)
-   end
- end
-end 
+  puts index
+  if valid_move?(board, index)
+    move(board, index, player = "X")
+    display_board(board)
+  else
+    turn(board)
+  end
+end
