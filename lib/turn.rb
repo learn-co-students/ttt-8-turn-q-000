@@ -31,10 +31,10 @@ def position_taken?(board, index)
     true
   end
  end
-end
+
 
 def input_to_index(input)
-  input = (input.to_int)
+  input = (input.to_i)
   index = input - 1
 end
 
