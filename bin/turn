@@ -6,9 +6,3 @@ puts "Welcome to Tic Tac Toe!"
 display_board(board)
 index = turn(board)
 #puts position_taken?(board, index)
-while valid_move?(board, index)
-      puts "index: #{index}"
-      move(board, index, "X")
-      display_board(board)
-      index = turn(board)
-end
