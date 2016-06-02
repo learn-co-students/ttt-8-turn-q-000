@@ -11,10 +11,10 @@ def turn(board)
    users_input = gets.strip
    index = input_to_index(users_input) 
   if valid_move?(board, index) == true 
-    return move(board, index, token = "X")
-    display_board(board, index, token = "X")
+    move(board, index, token = "X")
+    display_board(board)
   else 
-    return turn(board)
+   turn(board)
   end
 end
 
