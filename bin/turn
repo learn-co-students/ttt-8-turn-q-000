@@ -1,1 +1,12 @@
-#!/usr/bin/env ruby
+!/usr/bin/env ruby
+
+gets.strip == user_input
+
+input_to_index(gets.strip)
+
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+turn(board)
+gets.strip
+board = ["X", " ", " ", " ", " ", " ", " ", " ", " "]
+display_board(board[0])
