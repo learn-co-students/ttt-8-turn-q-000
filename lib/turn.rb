@@ -11,43 +11,23 @@ def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def move(board, index, token = "X")
-  board[index] = token
-end
-
-#def position_taken?(board, user_input, token = "X")
-  #if (board[index] == " ") || (board[index] == "") || (board[index] == nil)
-    #false
-  #elsif (board[index] == "X") || (board[index] == "x")|| (board[index] == "O") || (board[index] == "o")
-    #true
-  #end
-#end
-
 def valid_move?(board, index)
-  if (position_taken?(board, index) == false) && (board[index].to_i.between?(0, 8) == true) && (board[index] != nil)
+  if (position_taken?(board, index) == false) && (index.between?(0, 8) == true)
     true
-  else
-    false
   end
 end
 
 
 def position_taken?(board, index, token = "X")
-
-  if (board[index] == " ") || (board[index] == "") || (board[index] == nil)
-    false
-  elsif (board[index] == "X") || (board[index] == "x")|| (board[index] == "O") || (board[index] == "o")
-    true
-  end
+  board[index] != " "
 end
 
-def turn(board)
-  loop do
+def testturn(board)
+  puts "Please enter 1-9:"
   #get input
-  puts "Please enter 1-9:"
   user_input = gets.strip
   #convert input to index
-  index = input_to_index(user_input)
+  input_to_index(user_input)
   #if index is valid
     if valid_move?(board, index) == true
     #make the move for input
@@ -56,5 +36,24 @@ def turn(board)
       turn(board)
     #ask for input again until you get a valid input
     end
+end
+
+def turn(board)
+  loop do
+    puts "Please enter 1-9:"
+    input = gets.strip
+    index = input_to_index(input)
+    if valid_move?(board, index) == true
+    move(board, index)
+    display_board(board)
+      break
+    else
+      turn(board)
+      break
+    end
   end
+end
+
+def move(board, index, token = "X")
+  board[index] = token
 end
