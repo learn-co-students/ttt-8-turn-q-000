@@ -34,17 +34,6 @@ if index.between?(0, 8)
 end
 end
 
-  def teste(index)
-    loop do
-      if index.between?(0, 8) == false
-        puts "This is an invalid move, please enter a new one"
-        index = turn(board)
-      else
-        index.between?(0, 8)
-        break
-      end
-    end
-  end
 
   def move(array, jogada, value = "X")
     array[jogada] = value
