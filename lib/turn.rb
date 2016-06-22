@@ -29,20 +29,18 @@ def input_to_index(input)
   input - 1
 end
 
-def move(array, index, character="X")
-  array[index] = character
+def move(board, index, character="X")
+  board[index] = character
 end
 
 def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
-  input_to_index(input)
+  index = input_to_index(input)
   if valid_move?(board, index)
-    move(array, index, character="X")
+    move(board, index, character="X")
     display_board(board)
   else
-    until valid_move?(board, index) == true
     turn(board)
-    end
   end
 end
