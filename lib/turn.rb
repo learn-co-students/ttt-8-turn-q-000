@@ -38,13 +38,8 @@ def turn(array)
   index = input_to_index(user_input)
   if valid_move?(array, index)
     move(array, index)
+    display_board(array)
   else
-    until valid_move?(array, index)
-      puts "Please enter a valid number from 1-9:"
-      user_input = gets.to_i
-      index = input_to_index(user_input)
-    end
+    turn(array)
   end
-  move(array, index)
-  display_board(array)
 end
