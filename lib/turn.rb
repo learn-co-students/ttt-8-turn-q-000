@@ -9,7 +9,7 @@ def display_board(board)
 end
 
 # get input
-def turn
+def turn(input)
   puts "Please enter 1-9:"
   input = gets.chomp
 end
