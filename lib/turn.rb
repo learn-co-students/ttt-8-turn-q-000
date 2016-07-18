@@ -8,12 +8,6 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
-# get input
-def turn(input)
-  puts "Please enter 1-9:"
-  input = gets.chomp
-end
-
 # convert input to index
 def input_to_index(input)
   index = input.to_i
@@ -23,12 +17,24 @@ end
 
 # if index is valid
 def valid_move?(board, index)
-  valid = nil
   if index.between?(0,8) && !position_taken?(board, index)
-    valid = true
-  else valid = false
+    true
   end
 end
+
+# get input
+def turn(board)
+  puts "Please enter 1-9:"
+  input = gets.chomp
+  index = input_to_index(input)
+  if valid_move?(board, index)
+    move(board, index)
+    display_board(board)
+  else
+    turn(board)
+  end
+end
+
 # re-define your #position_taken? method here, so that you can use it in the #valid_move? method above.
 def position_taken?(board, index)
   taken = nil
