@@ -1,14 +1,16 @@
 def turn(board)
-  puts "Please enter 1-9."
+  puts "Please enter 1-9:"
   number = gets.strip
-
-
-  if number.between?(1,9)
-    display_board(board)
-    input_to_index(number)
-    move(array,index, value = 'X')
-    valid_move?(board,index)
+  index = input_to_index(number)
+  until index.between?(0,8)
+    puts "Please enter 1-9"
+    number = gets.strip
+    index = input_to_index(number)
   end
+  valid_move?(board,0)
+  move(board, index, "X")
+  display_board(board)
+
 
 end
 
@@ -29,8 +31,9 @@ def input_to_index(number)
   return index
 end
 
-def move (array, index,value = "X")
-  array[index] = value
+def move (board, index,value = "X")
+  board[index] = value
+  return value
 end
 
 # code your #valid_move? method here
@@ -39,6 +42,7 @@ def valid_move?(board, index)
   position_taken?(board,index)
   else
     false
+
   end
 
 
