@@ -43,7 +43,6 @@ def turn(board)
     move(board, index)
     display_board(board)
   else
-    puts"Please enter 1-9:"
     turn(board)
   end
 end
