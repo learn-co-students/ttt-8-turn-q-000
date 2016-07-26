@@ -26,7 +26,7 @@ def input_to_index(index)
 end
 
 def valid_move?(board, index)
-  if index.between?(0, board.length-1) && !['X', 'O'].include?(board[index])
+  if index.between?(0, board.length-1) && ['', ' ', nil].include?(board[index])
     return true
   else
     return false
