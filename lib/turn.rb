@@ -17,12 +17,15 @@ end
 
 # print display_board ["X", "X", "X", "X", "O", "O", "X", "O", "O"]
 
+
+
+
+
 def input_to_index(index)
   index.to_i - 1
 end
 
 def valid_move?(board, index)
-
   if index.between?(0, board.length-1) && !['X', 'O'].include?(board[index])
     return true
   else
@@ -39,15 +42,17 @@ end
 
 def turn(board)
   puts("Please enter 1-9:")
-  index = input_to_index(gets)
+
+  index = input_to_index(gets.chomp)
+
   if valid_move?(board, index)
-    move(board, index, char="X")
+    move(board, index)
     display_board(board)
   else
     turn(board)
   end
 end
-
+  
 
 
 
