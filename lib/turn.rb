@@ -18,8 +18,8 @@ end
 
 #method to check if position has been taken or not
 #input from user is called "index"
-def position_taken?(board, input)
-  index = input_to_index(input)
+def position_taken?(board, index)
+  #index = input_to_index(input)
   if (board[index] == " ") || (board[index] == nil) || (board[index] == "")
     false
   elsif board[index] == "X" || "O"
@@ -28,16 +28,28 @@ def position_taken?(board, input)
 end
 
 #method to check if the move is valid
-def valid_move?(board, input)
-  index = input_to_index(input)
-  if (position_taken?(board, input) == false) && (index.between?(0,8))
+def valid_move?(board, index)
+  #index = input_to_index(input)
+  if (position_taken?(board, index) == false) && (index.between?(0,8))
     true
   else
     false
   end
 end
 
-def move(board, input, token="X")
-  index = input_to_index(input)
+def move(board, index, token="X")
+  #index = input_to_index(input)
   board[index] = token
+end
+
+def turn(board)
+  puts "Please enter 1-9:"
+  input = gets.chomp
+  index = input_to_index(input)
+  if valid_move?(board, index)
+    move(board, index, token="X")
+    display_board(board)
+  else
+    turn(board)
+  end
 end
