@@ -11,7 +11,6 @@ def display_board(board)
 end
 
 def turn(arg)
-  user_input = ""
   puts "Please enter 1-9:"
   user_input = gets.chomp
   if valid_move?(arg, user_input)
