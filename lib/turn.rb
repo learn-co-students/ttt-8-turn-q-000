@@ -4,37 +4,58 @@ def display_board(board)
   puts " #{board[3]} | #{board[4]} | #{board[5]} "
   puts "-----------"
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
-  end
-
-def valid_move?(board, position)
-  position = position.to_i - 1
-  if position.between?(0, 8) == true && position_taken?(board, position) == false
-    true
-  end
-end
-# re-define your #position_taken? method here, so that you can use it in the #valid_move? method above.
-def position_taken?(board, int)
-  if board[int] == "X" || board[int] == "O"
-    true
-  elsif board[int] == " " || board[int] == ""
-    false
-  elsif board[int] == nil
-    false
-  end
-end
-
-def move(board, input, char="X")
-  input = input.to_i
-  board[input-1] = char
 end
 
 def turn(board)
-  puts "Please enter 1-9:"
-  square = gets.chomp
-  if valid_move?(board, square)
-    move(board, square, char)
-    display_board(board)
-  else
-    turn(board)
-  end
+	puts "Please enter 1-9:"
+	input = gets.strip
+	index = input_to_index(input)
+	puts "board array index selected is #{index}."
+
+	#check index for validation
+	if index_in_range?(index)
+		puts "index is in range"
+	else
+		puts "index is not in range"
+	end
+
+	#check if the position is taken
+	if position_taken?(board, index)
+		puts "position is taken"
+	else
+		puts "position is available"
+	end
+
+	if valid_move?(board, index)
+		puts "move is valid"
+		move(board, index)
+		display_board(board)
+	else
+		puts "move is not valid"
+		turn(board)
+	end
+end
+
+def input_to_index(input)
+	input.to_i - 1
+end
+
+def index_in_range?(index)
+	index >= 0 && index <= 8
+end
+
+def position_taken?(board, index)
+	if board[index] == " " || board[index] == "" || board[index] == nil
+		false
+	elsif board[index] == "X" || board[index] == "O"
+		true
+	end
+end
+
+def valid_move?(board, index)
+	index_in_range?(index) && !position_taken?(board, index)
+end
+
+def move(board, index, token = "X")
+	board[index] = token
 end
