@@ -116,7 +116,7 @@ describe './lib/turn.rb' do
     end
 
     it 'asks for input again after a failed validation' do
-      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+      board = [" ", " ", " ", " ", " ", " ", " ", " "]
 
       allow($stdout).to receive(:puts)
 
