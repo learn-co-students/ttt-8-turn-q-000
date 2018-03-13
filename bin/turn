@@ -1,1 +1,8 @@
 #!/usr/bin/env ruby
+./bin/turn.rb
+
+Puts "Welcome to Tic Tac Toe!"
+display_board
+
+puts "Please enter 1-9:"
+position = gets.strip
