@@ -1,1 +1,5 @@
 #!/usr/bin/env ruby
+ load './lib/turn.rb' 
+
+board = Array.new(9," ")
+turn(board)
