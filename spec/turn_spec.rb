@@ -75,12 +75,12 @@ describe './lib/turn.rb' do
   end
 
   describe '#turn' do
-    it 'asks the user for input by printing: "Please enter 1-9:"' do
+    it 'asks the user for input by printing: "Please input position number (1-9)!"' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
       allow($stdout).to receive(:puts)
       allow(self).to receive(:gets).and_return("1")
 
-      expect($stdout).to receive(:puts).with("Please enter 1-9:")
+      expect($stdout).to receive(:puts).with("Please input position number (1-9)!")
 
       turn(board)
     end
