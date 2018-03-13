@@ -131,7 +131,7 @@ describe './lib/turn.rb' do
 
       allow($stdout).to receive(:puts)
 
-      expect(self).to receive(:gets).and_return("1")
+      expect(self).to receive(:gets).and_return(1)
 
       turn(board)
 
