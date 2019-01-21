@@ -4,7 +4,7 @@
 
 1. Build a method composed of the use of many methods ("helper methods") previously defined.
 2. Use method return values to control the logic of a composed method.
-3. Use an input validation loop or use recursion to create a loop.
+3. Use an input validation loop or recursion to create a loop.
 4. Build a CLI that uses a single method call to execute.
 
 ## Overview
@@ -15,9 +15,9 @@ A turn of Tic Tac Toe is composed of the following routine:
 
 1. Asking the user for their move by position 1-9.
 2. Receiving the user input.
-3. If the move is valid, make the move.
-4. If the move is invalid, ask for a new move until a valid move is received.
-5. Display the board after the valid move has been made.
+3. Convert position to an index.
+4. If the move is valid, make the move and display the board to the user.
+5. If the move is invalid, ask for a new move until a valid move is received.
 
 All these procedures will be wrapped into our `#turn` method. However, the majority of the logic for these procedures will be defined and encapsulated in individual methods (some of which you may have built previously).
 
@@ -26,12 +26,13 @@ You can imagine the pseudocode for the `#turn` method:
 ```
 ask for input
 get input
-if input is valid
-  make the move for input
+convert input to index
+if index is valid
+  make the move for index
+  show the board
 else
   ask for input again until you get a valid input
 end
-show the board
 ```
 
 ## Instructions
@@ -46,23 +47,23 @@ Should accept a board as an argument and print out the current state of the boar
 
 #### `#valid_move?`
 
-Should accept a board and a position from the user (remember that the user will input a number 1-9 but your board is *really* indexed 0-8) and return true if the position is within the correct range of 1-9 and is currently unoccupied by an X or O token.
+Should accept a board and an index from the user and return true if the index is within the correct range of 0-8 and is currently unoccupied by an X or O token.
 
 **Hint: While not explicitly required by this lab, you might want to encapsulate the logic to check if a position is occupied in its own method, perhaps `#position_taken?`**
 
 #### `#move`
 
-This method should accept a board, a position from the user (which will be in the 1-9 format), and a token to mark that position with (you can give that argument a default value of 'X'––we're not worrying about whose turn it is yet). The method should set the correct index value of that position within the board equal to the token.
+This method should accept a board, an index from the user (which was converted from their raw input with `input_to_index`), and a token to mark that position with (you can give that argument a default value of 'X'––we're not worrying about whose turn it is yet). The method should set the correct index value of that position within the board equal to the token.
 
 ### Workflow
 
-Start with building those methods (or copying code you might have written before) and making the first few tests in `lib/turn_spec.rb` pass. You can use the `learn --fail-fast` or `rspec --fail-fast` mode to only see 1 failure at a time and allow you to work through those method definitions.
+Start with building those methods (or copying code you might have written before) and making the first few tests in `spec/turn_spec.rb` pass. You can use the `learn --fail-fast` or `rspec --fail-fast` mode to only see 1 failure at a time and allow you to work through those method definitions.
 
-You'll then need to build your `#turn` method. Before building a full turn method according to the failing tests, let's setup a quick CLI so that you can watch your turn method perform as you build, visually confirming it behaves as expected.
+You'll then need to build your `#turn` method. Before building a full `#turn` method according to the failing tests, let's setup a quick CLI so that you can watch your `#turn` method perform as you build, visually confirming it behaves as expected.
 
 Open `bin/turn`, you'll see that it is already setup with `#!/usr/bin/env ruby` so you can execute it by running `./bin/turn` or `ruby bin/turn` from your terminal. It currently does nothing (because it has no code), but try it out just for fun.
 
-The purpose of this file is to execute a turn of tic tac toe. The first thing it needs to do is load our library of methods defined in `lib/turn.rb`.
+The purpose of this file is to execute a turn of Tic Tac Toe. The first thing it needs to do is load our library of methods defined in `lib/turn.rb`.
 
 Edit `bin/turn`:
 
@@ -71,7 +72,7 @@ Edit `bin/turn`:
 require_relative '../lib/turn'
 ```
 
-By adding `require_relative '../lib/turn'` we are telling ruby to load a file from a relative path to the current file. Since we're in `bin` we have to go up a directory and into lib to find `turn.rb`, thus the path `../lib/turn`. **You never need to give the .rb extension to a path for require_relative, ruby assumes you mean a .rb file.**
+By adding `require_relative '../lib/turn'` we are telling Ruby to load a file from a relative path to the current file. Since we're in `bin` we have to go up a directory and into `lib` to find `turn.rb`, thus the path `../lib/turn`. **You never need to give the .rb extension to a path for require_relative. Ruby assumes you mean a .rb file.**
 
 Next, the CLI needs to setup the data required to play a game of Tic Tac Toe, namely, the `board` variable to store the array we use to keep track of the state of the board.
 
@@ -101,7 +102,7 @@ puts "Welcome to Tic Tac Toe!"
 display_board(board)
 ```
 
-Notice how we evoke the `#display_board` method defined in lib/turn, passing the local board data into it via an argument on the last line.
+Notice how we evoke the `#display_board` method defined in `lib/turn.rb`, passing the local board data into it via an argument on the last line.
 
 Now let's run this CLI: `bin/turn` or `ruby bin/turn` from your terminal. You should see:
 
@@ -133,7 +134,7 @@ turn(board)
 
 If we ran the CLI right now, without defining `#turn` in `lib/turn.rb`, we'd get a `NameError` complaining about an undefined local variable or method `turn`.
 
-Let's quickly jump to `lib/turn.rb` and just stub out the most simple version of the turn method.
+Let's quickly jump to `lib/turn.rb` and just stub out the most simple version of the `#turn` method.
 
 Add to `lib/turn.rb`
 
@@ -160,22 +161,23 @@ Great! Now as we add logic to `#turn`, we can use our CLI to see how it behaves.
 
 ### `#turn`
 
-The hard part of the turn method is figuring out how to handle invalid input. We know that when a user enters invalid input, we want to ask them for input again. Imagine the pseudo-code again:
+The hard part of the `#turn` method is figuring out how to handle invalid input. We know that when a user enters invalid input, we want to ask them for input again. Imagine the pseudocode again:
 
 ```
 get input
-if input is valid
+convert input to index
+if index is valid
   make the move for input
 else
   ask for input again until you get a valid input
 end
 ```
 
-Asking for input again is the hard part. We either need a mechanism to repeat the entire logic again until input satisfies the valid requirement, like a loop of some sort, or we need to be able to execute a procedure that asks for a user's input again. It's almost like what we might want to do in the event of invalid user input is just replay the entire turn, no move was made, so why not just run `#turn` again?
+Asking for input again is the hard part. We either need a mechanism to repeat the entire logic again until input satisfies the valid requirement, like a loop of some sort, or we need to be able to execute a procedure that asks for a user's input again. It's almost like what we might want to do in the event of invalid user input is just replay the entire turn. No move was made, so why not just run `#turn` again?
 
-Calling a method from within itself is totally okay in programming, in fact, it is an elegant solution to some complex problems. **Recursion** is the repeated application of the same procedure. [Google it](https://www.google.com/search?q=recursion&oq=recursion&aqs=chrome..69i57j69i60l3j69i65l2.1630j0j1&sourceid=chrome&es_sm=119&ie=UTF-8) **there's an easter egg from Google developers on that page, can you find it?**
+Calling a method from within itself is totally okay in programming. In fact, it is an elegant solution to some complex problems. **Recursion** is the repeated application of the same procedure. [Google it!](https://www.google.com/search?q=recursion&oq=recursion&aqs=chrome..69i57j69i60l3j69i65l2.1630j0j1&sourceid=chrome&es_sm=119&ie=UTF-8) There's an easter egg from Google developers on that page; can you find it?
 
-If you are familiar with loops, that is a totally acceptable solution to the input validation problem as well.
+As you are already familiar with loops, that is a totally acceptable solution to the input validation problem as well.
 
 As you try to get it working, keep playing with `bin/turn` until it works as expected, endlessly asking you for a valid turn input. If you ever need to exit the CLI without giving an input, just hit `CTRL+C` (sometimes `ALT+C` or `COMMAND+C`).
 
@@ -232,15 +234,15 @@ board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
 puts "Welcome to Tic Tac Toe!"
 
-move(board, "5", "X")
-move(board, "1", "O")
+move(board, 4, "X")
+move(board, 0, "O")
 
 display_board(board)
 
 turn(board)
 ```
 
-Notice that before the game even really starts, we hard code an execution of two moves, X to the middle position ("5"), and O to the top left ("1").
+Notice that before the game even really starts, we hard code an execution of two moves, X to the middle position (4), and O to the top left (0).
 
 When we run the CLI, we'd see:
 
@@ -268,9 +270,9 @@ board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
 puts "Welcome to Tic Tac Toe!"
 
-move(board, "5", "X")
-move(board, "1", "O")
-move(board, "2", "X")
+move(board, 4, "X")
+move(board, 0, "O")
+move(board, 1, "X")
 
 display_board(board)
 
@@ -395,9 +397,12 @@ Please enter 1-9:
  X | X | X
 -----------
  X | X | X
- 
+
 ```
 
 Another issue, besides only marking Xs as described above, is that the game played way too many turns! We need it to know how to quit if someone wins.
 
-Even with these deficiencies, this `#turn` method means you are very close to building a complete Tic Tac Toe. Get excited!
+Even with these deficiencies, this `#turn` method means you are very close to building a complete Tic Tac Toe game. Get excited!
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/ttt-8-turn' title='Building a Tic Tac Toe Turn'>Building a Tic Tac Toe Turn</a> on Learn.co and start learning to code for free.</p>
+

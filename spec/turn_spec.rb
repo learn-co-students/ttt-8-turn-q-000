@@ -27,26 +27,48 @@ describe './lib/turn.rb' do
     end
   end
 
+  describe '#input_to_index' do
+
+    it 'converts a user_input to an integer' do
+      user_input = "1"
+
+      expect(input_to_index(user_input)).to be_a(Integer)
+    end
+
+    it 'subtracts 1 from the user_input' do
+      user_input = "6"
+
+      expect(input_to_index(user_input)).to be(5)
+    end
+
+    it 'returns -1 for strings without integers' do
+      user_input = "invalid"
+
+      expect(input_to_index(user_input)).to be(-1)
+    end
+
+  end
+
   describe '#valid_move?' do
-    it 'returns true/false based on position' do
+    it 'returns true/false based on index' do
       board = [" ", " ", " ", " ", "X", " ", " ", " ", " "]
 
-      position = "1"
-      expect(valid_move?(board, position)).to be_truthy
+      index = 0
+      expect(valid_move?(board, index)).to be_truthy
 
-      position = "5"
-      expect(valid_move?(board, position)).to be_falsey
+      index = 4
+      expect(valid_move?(board, index)).to be_falsey
 
-      position = "invalid"
-      expect(valid_move?(board, position)).to be_falsey
+      index = -1
+      expect(valid_move?(board, index)).to be_falsey
     end
   end
 
   describe '#move' do
     it 'allows "X" player in the bottom right and "O" in the top left ' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-      move(board, 1, "O")
-      move(board, 9, "X")
+      move(board, 0, "O")
+      move(board, 8, "X")
 
       expect(board).to eq(["O", " ", " ", " ", " ", " ", " ", " ", "X"])
     end
@@ -72,12 +94,23 @@ describe './lib/turn.rb' do
       turn(board)
     end
 
+    it 'calls the input_to_index method' do
+      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+      allow($stdout).to receive(:puts)
+
+      allow(self).to receive(:gets).and_return("1")
+
+      expect(self).to receive(:input_to_index).and_call_original
+
+      turn(board)
+    end
+
     it 'validates the input correctly' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
       allow($stdout).to receive(:puts)
 
       expect(self).to receive(:gets).and_return("1")
-      expect(self).to receive(:valid_move?).with(board, "1").and_return(true)
+      expect(self).to receive(:valid_move?).with(board, 0).and_return(true)
 
       turn(board)
     end
