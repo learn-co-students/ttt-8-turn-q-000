@@ -34,3 +34,16 @@ end
 def move(board, position,char = "X")
   board[position.to_i - 1] = char
 end
+
+def turn (board)
+  valid_move = false
+  until valid_move == true
+    puts "Please enter 1-9:"
+    position = gets.strip
+    if valid_move?(board, position)
+      valid_move = true
+      move(board, position)
+      display_board(board)
+    end
+  end
+end
